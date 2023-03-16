@@ -1,0 +1,27 @@
+.main-container {
+  display: grid;
+  grid-template-areas: ". . . . . ."
+  "pd2 b b b b pd3"
+  ". b b b b ."
+  ". b b b b ."
+  "pd1 b b b b pd4"
+  ". . . . . .";
+  grid-auto-columns: max-content;
+  justify-content: center;
+}
+
+.layout-main {
+  margin: 0 -1.5em;
+}
+
+@media screen and (orientation:portrait) {
+  .main-container {
+    grid-template-areas:
+    ". pd2 . . pd3 ."
+    ". b b b b ."
+    ". b b b b ."
+    ". b b b b ."
+    ". b b b b ."
+    ". pd1 . . pd4 .";
+  }
+}

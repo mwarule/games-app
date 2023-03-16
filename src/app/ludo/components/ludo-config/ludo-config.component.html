@@ -1,0 +1,23 @@
+<div class="block-section" *ngIf="!searching; else showSearching">
+  <div class="block-header pl-2">
+    <span class="block-title">
+      <span>Select Players</span>
+    </span>
+  </div>
+  <div class="block-content">
+    <div class="surface-ground text-center px-1 py-2 md:px-2 lg:px-2">
+      <div class="grid m-1">
+        <div class="col-12 p-0 mb-4">
+          <p-selectButton [options]="counts" [(ngModel)]="selectedCount" optionLabel="label"
+            optionValue="value"></p-selectButton>
+        </div>
+        <div class="col-12 p-0">
+          <button pButton pRipple label="Play" class="mb-2 w-5 p-2 text-xl" (click)="searchPlayers()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #showSearching>
+  <app-ludo-searching [timer]="timer"></app-ludo-searching>
+</ng-template>

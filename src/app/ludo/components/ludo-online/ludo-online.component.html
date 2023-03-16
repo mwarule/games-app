@@ -1,0 +1,21 @@
+<div class="main-container" id="ludo-container" *ngIf="gameState && gameState.status === 'STARTED'">
+  <ng-template dice></ng-template>
+  <app-ludo-board
+    #boardComponent
+    (boardEmitter)="onBoardEmitter($event)" [currentPlayer]="currentPlayer"
+    [diceValueObservable]="diceValueSubject"
+    [players]="players"></app-ludo-board>
+</div>
+
+<div class="no-state" *ngIf="gameState && gameState.status === 'READY'">
+  <div class="col-12 mt-8 mb-8 p-2 md:p-8"
+    style="border-radius: 20px; background: linear-gradient(0deg, rgba(255, 255,
+    255, 0.6), rgba(255, 255, 255, 0.6)), radial-gradient(77.36% 256.97% at
+    77.36% 57.52%, #EFE1AF 0%, #C3DCFA 100%);">
+    <div class="flex flex-column justify-content-center align-items-center
+      text-center px-3 py-3 md:py-0">
+      <h3 class="text-gray-900 mb-2">Ludo King - Online Multiplayer</h3>
+      <span class="text-gray-600 text-2xl" [innerHTML]="message"></span>
+    </div>
+  </div>
+</div>

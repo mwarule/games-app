@@ -1,0 +1,16 @@
+.search-container {
+  margin: 0;
+  .search-svg {
+    #wrap {
+      width: 100%;
+      display: flex;
+    }
+  }
+  .info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

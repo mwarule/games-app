@@ -1,0 +1,224 @@
+// :host {
+//   display: grid;
+// }
+:host#host-dice-1 {
+  grid-area: pd1;
+}
+:host#host-dice-2 {
+  grid-area: pd2;
+}
+:host#host-dice-3 {
+  grid-area: pd3;
+}
+:host#host-dice-4 {
+  grid-area: pd4;
+}
+
+.dice-container {
+  transform: scale(0.6);
+  margin: -2.5em -1.75em;
+  border: 5px solid gainsboro;
+  background-color: white;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .player-info {
+    text-align: center;
+  }
+
+  .arrow-container {
+    transform: translateY(20px);
+    text-align: center;
+    visibility: hidden;
+  }
+  .arrow-container.active {
+    visibility: visible;
+    .arrow-icon {
+      animation: arrow-animation-down 0.7s linear infinite forwards;
+    }
+  }
+
+  .dice {
+    padding: 0 1.5em;
+    .die-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      list-style-type: none;
+      transform-style: preserve-3d;
+      width: 100%;
+      cursor: pointer;
+      padding: 0.25em;
+      .die-item {
+        background-color: #fefefe;
+        box-shadow: inset -0.35rem 0.35rem 0.75rem rgb(0 0 0 / 30%), inset 0.5rem -0.25rem 0.5rem rgb(0 0 0 / 15%);
+        display: grid;
+        grid-column: 1;
+        grid-row: 1;
+        grid-template-areas:
+            "one two three"
+            "four five six"
+            "seven eight nine";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 65px;
+        padding: 1rem;
+        width: 65px;
+        grid-gap: 0.25rem;
+        border-radius: 15px;
+        .dot {
+          align-self: center;
+          background-color: #676767;
+          border-radius: 50%;
+          box-shadow: inset -0.15rem 0.15rem 0.25rem rgb(0 0 0 / 50%);
+          display: block;
+          height: 10px;
+          justify-self: center;
+          width: 10px;
+        }
+      }
+      [data-side="1"] {
+        transform: rotate3d(0, 0, 0, 90deg) translateZ(30px);
+      }
+      [data-side="2"] {
+        transform: rotate3d(-1, 0, 0, 90deg) translateZ(30px);
+      }
+      [data-side="3"] {
+        transform: rotate3d(0, 1, 0, 90deg) translateZ(30px);
+      }
+      [data-side="4"] {
+        transform: rotate3d(0, -1, 0, 90deg) translateZ(30px);
+      }
+      [data-side="5"] {
+        transform: rotate3d(1, 0, 0, 90deg) translateZ(30px);
+      }
+      [data-side="6"] {
+        transform: rotate3d(1, 0, 0, 180deg) translateZ(30px);
+      }
+      [data-side="1"] .dot:nth-of-type(1) {
+        grid-area: five;
+      }
+      [data-side="2"] .dot:nth-of-type(1) {
+        grid-area: one;
+      }
+      [data-side="2"] .dot:nth-of-type(2) {
+        grid-area: nine;
+      }
+      [data-side="3"] .dot:nth-of-type(1) {
+        grid-area: one;
+      }
+      [data-side="3"] .dot:nth-of-type(2) {
+        grid-area: five;
+      }
+      [data-side="3"] .dot:nth-of-type(3) {
+        grid-area: nine;
+      }
+      [data-side="4"] .dot:nth-of-type(1) {
+        grid-area: one;
+      }
+      [data-side="4"] .dot:nth-of-type(2) {
+        grid-area: three;
+      }
+      [data-side="4"] .dot:nth-of-type(3) {
+        grid-area: seven;
+      }
+      [data-side="4"] .dot:nth-of-type(4) {
+        grid-area: nine;
+      }
+      [data-side="5"] .dot:nth-of-type(1) {
+        grid-area: one;
+      }
+      [data-side="5"] .dot:nth-of-type(2) {
+        grid-area: three;
+      }
+      [data-side="5"] .dot:nth-of-type(3) {
+        grid-area: five;
+      }
+      [data-side="5"] .dot:nth-of-type(4) {
+        grid-area: seven;
+      }
+      [data-side="5"] .dot:nth-of-type(5) {
+        grid-area: nine;
+      }
+      [data-side="6"] .dot:nth-of-type(1) {
+        grid-area: one;
+      }
+      [data-side="6"] .dot:nth-of-type(2) {
+        grid-area: three;
+      }
+      [data-side="6"] .dot:nth-of-type(3) {
+        grid-area: four;
+      }
+      [data-side="6"] .dot:nth-of-type(4) {
+        grid-area: six;
+      }
+      [data-side="6"] .dot:nth-of-type(5) {
+        grid-area: seven;
+      }
+      [data-side="6"] .dot:nth-of-type(6) {
+        grid-area: nine;
+      }
+    }
+    .die-list.odd-roll {
+      transition: transform 0.25s;
+    }
+    .die-list.even-roll {
+      transition: transform 0.5s;
+    }
+    .die-list.even-roll[data-roll="1"] {
+      transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+    }
+    .die-list.even-roll[data-roll="2"] {
+      transform: rotateX(450deg) rotateY(720deg) rotateZ(360deg);
+    }
+    .die-list.even-roll[data-roll="3"] {
+      transform: rotateX(360deg) rotateY(630deg) rotateZ(360deg);
+    }
+    .die-list.even-roll[data-roll="4"] {
+      transform: rotateX(360deg) rotateY(810deg) rotateZ(360deg);
+    }
+    .die-list.even-roll[data-roll="5"] {
+      transform: rotateX(270deg) rotateY(720deg) rotateZ(360deg);
+    }
+    .die-list.even-roll[data-roll="6"] {
+      transform: rotateX(360deg) rotateY(900deg) rotateZ(360deg);
+    }
+    .die-list.odd-roll[data-roll="1"] {
+      transform: rotateX(-360deg) rotateY(-720deg) rotateZ(-360deg);
+    }
+    .die-list.odd-roll[data-roll="2"] {
+      transform: rotateX(-270deg) rotateY(-720deg) rotateZ(-360deg);
+    }
+    .die-list.odd-roll[data-roll="3"] {
+      transform: rotateX(-360deg) rotateY(-810deg) rotateZ(-360deg);
+    }
+    .die-list.odd-roll[data-roll="4"] {
+      transform: rotateX(-360deg) rotateY(-630deg) rotateZ(-360deg);
+    }
+    .die-list.odd-roll[data-roll="5"] {
+      transform: rotateX(-450deg) rotateY(-720deg) rotateZ(-360deg);
+    }
+    .die-list.odd-roll[data-roll="6"] {
+      transform: rotateX(-360deg) rotateY(-900deg) rotateZ(-360deg);
+    }
+  }
+}
+
+
+@keyframes arrow-animation-down {
+  0% {
+    transform: translateY(-40px) scale(1, 1)
+  }
+  25% {
+    transform: translateY(-30px) scale(1, 1)
+  }
+  50% {
+    transform: translateY(-10px) scale(1.2, 1.2)
+  }
+  75% {
+    transform: translateY(-30px) scale(1.2, 1.2)
+  }
+  100% {
+    transform: translateY(-40px) scale(1, 1)
+  }
+}

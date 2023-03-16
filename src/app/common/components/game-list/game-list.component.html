@@ -1,0 +1,18 @@
+<div class="block-section">
+  <div class="block-header">
+    <span class="block-title">
+      <span>Games</span>
+    </span>
+  </div>
+  <div class="block-content">
+    <div>
+      <div class="surface-ground px-1 py-2 md:px-2 lg:px-2">
+        <div class="grid">
+          <ng-container *ngFor="let item of games; let i = index;">
+            <div class="col-12 lg:col-4 md:col-6" app-game-card [item]="item" [index]="i"></div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
