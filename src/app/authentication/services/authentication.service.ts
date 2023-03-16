@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from "rxjs";
 import { User } from "src/app/common/models/user";
-const apiBaseUrl = `http://localhost:4200`
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -40,14 +40,14 @@ export class AuthenticationService {
   }
 
   register(user: User) {
-    return this.http.post(`${apiBaseUrl}/api/auth/signup`, user);
+    return this.http.post(`${environment.API_URL}/api/auth/signup`, user);
   }
 
   getAll() {
-    return this.http.get<User[]>(`${apiBaseUrl}/users`);
+    return this.http.get<User[]>(`${environment.API_URL}/users`);
   }
 
   getById(id: string) {
-    return this.http.get<User>(`${apiBaseUrl}/users/${id}`);
+    return this.http.get<User>(`${environment.API_URL}/users/${id}`);
   }
 }
