@@ -11,24 +11,32 @@ import { MessageService } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import { ErrorInterceptor } from './common/helpers/error.interceptor';
 import { NotFoundComponent } from './common/components/not-found/not-found.component';
+import { LayoutModule } from './layout/layout.module';
+import { CommonModule } from '@angular/common';
+import { GameListComponent } from './common/components/game-list/game-list.component';
+import { GameCardComponent } from './common/components/game-card/game-card.component';
+import { AppCommonModule } from './common/app-common.module';
+import { LudoModule } from './ludo/ludo.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
     BrowserAnimationsModule,
     HttpClientModule,
     DashboardModule,
-    ToastModule
+    ToastModule,
+    LayoutModule,
+    AppCommonModule,
+    LudoModule
   ],
   providers: [
-    MessageService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

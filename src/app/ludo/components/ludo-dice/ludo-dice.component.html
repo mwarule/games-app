@@ -1,0 +1,44 @@
+<div class="dice-container grid">
+  <div class="dice" (click)="diceClick()">
+    <div class="arrow-container mb-1" [class.active]="activateDice">
+      <i class="arrow-icon fa-solid fa-arrow-down fa-3x"></i>
+    </div>
+    <ol class="die-list justify-items-center" [ngClass]="rollStatus ? 'even-roll' : 'odd-roll'"
+      [attr.data-roll]="dataRoll" id="die-1">
+      <li class="die-item" data-side="1">
+        <span class="dot"></span>
+      </li>
+      <li class="die-item" data-side="2">
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </li>
+      <li class="die-item" data-side="3">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </li>
+      <li class="die-item" data-side="4">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </li>
+      <li class="die-item" data-side="5">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </li>
+      <li class="die-item" data-side="6">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </li>
+    </ol>
+  </div>
+  <div class="text-900 mb-3 font-medium clamp clamp-1" [innerHTML]="player.name"></div>
+</div>

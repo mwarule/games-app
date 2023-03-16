@@ -1,0 +1,42 @@
+<div class="block-section">
+  <div class="block-header pl-2">
+    <span class="block-title">
+      <span>Select Players</span>
+    </span>
+  </div>
+  <div class="block-content">
+    <div class="surface-ground px-1 py-2 md:px-2 lg:px-2">
+      <div class="grid m-1">
+        <div class="col-12 p-0">
+          <p-selectButton [options]="counts" [(ngModel)]="selectedCount" optionLabel="label"
+            optionValue="value" (onChange)="onChange()"></p-selectButton>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="block-section">
+  <div class="block-header pl-2">
+    <span class="block-title">
+      <span>Add Player details</span>
+    </span>
+  </div>
+  <div class="block-content">
+    <div class="surface-ground px-1 py-2 md:px-2 lg:px-2">
+      <div class="grid m-1">
+        <div class="col-12 p-0">
+          <form [formGroup]="form" *ngIf="selectedCount">
+            <div *ngFor="let control of players.controls ;let i = index;" formArrayName="players">
+              <div [formGroupName]="i">
+                <label for="username" class="block text-900 text-xl font-medium mb-2">Player {{i+1}}</label>
+                <input type="text" placeholder="Player Name" pInputText
+              class="w-full md:w-30rem mb-2" style="padding:1rem" [formControlName]="'player'+ (i+1)">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
