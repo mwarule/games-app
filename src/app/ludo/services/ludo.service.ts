@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client'
+import { environment } from 'src/environments/environment';
 import { LudoGameState } from '../models/ludo-game-state.model';
 @Injectable({
   providedIn: 'root'
 })
 export class LudoService {
-  socket: any = io('http://localhost:8080/ludo', {
+  socket: any = io(`${environment.SOCKET_URL}ludo`, {
     autoConnect: false,
     transports: ['websocket']
   })
