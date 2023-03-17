@@ -15,7 +15,7 @@ export class GameService {
   }
 
   getAll(): Observable<Game[]> {
-    return this.http.get<Game[]>(`${environment.API_URL}/games`);
+    return this.http.get<Game[]>(`${environment.API_URL}games`);
   }
 
   public sendMessage(message: any) {
