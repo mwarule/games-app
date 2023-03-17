@@ -22,7 +22,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<User>(`/api/auth/signin`, { username, password })
+    return this.http.post<User>(`${environment.API_URL}auth/signin`, { username, password })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
@@ -40,14 +40,14 @@ export class AuthenticationService {
   }
 
   register(user: User) {
-    return this.http.post(`${environment.API_URL}/api/auth/signup`, user);
+    return this.http.post(`${environment.API_URL}auth/signup`, user);
   }
 
   getAll() {
-    return this.http.get<User[]>(`${environment.API_URL}/users`);
+    return this.http.get<User[]>(`${environment.API_URL}users`);
   }
 
   getById(id: string) {
-    return this.http.get<User>(`${environment.API_URL}/users/${id}`);
+    return this.http.get<User>(`${environment.API_URL}users/${id}`);
   }
 }
