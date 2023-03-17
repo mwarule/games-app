@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Game } from "../models/game";
 import { io } from "socket.io-client";
-
-const apiBaseUrl = `http://localhost:4200/api`
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
@@ -16,7 +15,7 @@ export class GameService {
   }
 
   getAll(): Observable<Game[]> {
-    return this.http.get<Game[]>(`${apiBaseUrl}/games`);
+    return this.http.get<Game[]>(`${environment.API_URL}/games`);
   }
 
   public sendMessage(message: any) {
